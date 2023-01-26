@@ -5,8 +5,8 @@ class World:
     def add_cell(self, cell):
         self.cells.add(cell)
 
-    def isempty(self):
+    def is_empty(self):
         return len(self.cells) == 0
 
     def is_cell_alive(self, cell):
-        return True
+        return cell in self.cells
