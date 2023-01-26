@@ -1,13 +1,10 @@
+from world import World
 
 
-
-def test_two_plus_two():
-    assert 2 + 2 == 4
-
-def test_create_world():
+def test_create_world_and_check_is_empty():
     world = World()
 
-    assert world.cells.empty()
+    assert len(world.cells) == 0
 
 #def test_create_cell_and_check_exists():
 #    cell = (1, 1)
