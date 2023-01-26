@@ -13,3 +13,14 @@ class World:
 
     def get_num_of_neighbours(self, cell):
         pass
+
+
+class Cell:
+    def __init__(self, position):
+        self.position = position
+    
+    def __hash__(self) -> int:
+        return hash(self.position)
+
+    def __eq__(self, other):
+        return self.position == other.position
