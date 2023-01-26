@@ -7,3 +7,6 @@ class World:
 
     def isempty(self):
         return len(self.cells) == 0
+
+    def is_cell_alive(self, cell):
+        return True
