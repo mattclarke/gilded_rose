@@ -3,6 +3,7 @@ class Collector:
     def __init__(self):
         self.tests = []
         self.num_passed = 0
+        self.num_runs = 0
 
     def add_test(self, test):
         self.tests.append(test)
@@ -12,6 +13,7 @@ class Collector:
             test.run()
             if test.passed:
                 self.num_passed += 1
+            self.num_runs += 1
 
 class Test:
     def __init__(self, function):
@@ -46,16 +48,32 @@ def test_test_is_run():
     test.run()
     assert test.was_run == True
 
-def test_can_collect_results():
+def test_can_collect_one_fail():
+    collector = Collector()
+    def _fails():
+        raise RuntimeError()
+    collector.add_test(Test(_fails))
+    collector.run_tests()
+    assert collector.num_passed == 0
+    assert collector.num_runs == 1
+
+def test_can_collect_one_pass():
     collector = Collector()
     collector.add_test(Test(lambda: 123))
     collector.run_tests()
     assert collector.num_passed == 1
     assert collector.num_runs == 1
 
+def test_collector_can_print_results():
+    collector = Collector()
+    collector.add_test(Test(lambda: 123))
+    collector.run_tests()
+    results = collector.get_results()
+    assert results == "1 of 1"
 
 if __name__ == "__main__":
     test_test_is_run()
     test_test_passes()
     test_test_fails()
-    test_can_collect_results()
+    test_can_collect_one_fail()
+    test_can_collect_one_pass()
