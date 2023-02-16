@@ -2,9 +2,16 @@
 class Test:
     def __init__(self, function):
         self.was_run = False
+        self.passed = False
+        self.function = function
 
     def run(self):
-        self.passed = True
+        try:
+            function()
+        except:
+            pass
+        else:
+            self.passed = True
         self.was_run = True
 
 
@@ -13,10 +20,10 @@ def test_test_passes():
     test.run()
     assert test.passed
 
-def test_test_passes():
+def test_test_fails():
     test = Test(lambda: 123)
     test.run()
-    assert test.passed
+    assert not test.passed
 
 def test_test_is_run():
     test = Test(lambda: 123)
@@ -27,3 +34,4 @@ def test_test_is_run():
 if __name__ == "__main__":
     test_test_is_run()
     test_test_passes()
+    test_test_fails()
