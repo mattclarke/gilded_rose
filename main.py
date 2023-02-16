@@ -4,7 +4,19 @@ class Test:
         self.was_run = False
 
     def run(self):
+        self.passed = True
         self.was_run = True
+
+
+def test_test_passes():
+    test = Test(lambda: 123)
+    test.run()
+    assert test.passed
+
+def test_test_passes():
+    test = Test(lambda: 123)
+    test.run()
+    assert test.passed
 
 def test_test_is_run():
     test = Test(lambda: 123)
@@ -14,3 +26,4 @@ def test_test_is_run():
 
 if __name__ == "__main__":
     test_test_is_run()
+    test_test_passes()
