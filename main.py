@@ -94,10 +94,9 @@ def test_collector_can_list_failed_tests():
     assert "_fails" in collector.failures
 
 if __name__ == "__main__":
-    test_test_is_run()
-    test_test_passes()
-    test_test_fails()
-    test_can_collect_one_fail()
-    test_can_collect_one_pass()
-    test_collector_can_print_results()
-    test_collector_can_list_failed_tests()
+    functions = [x for x in locals() if x.startswith('test_')]
+    collector = Collector()
+    for func in functions:
+        collector.add_test(Test(locals()[func]))
+    collector.run_tests()
+    print(collector.get_results())
