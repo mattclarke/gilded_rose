@@ -7,7 +7,7 @@ class Test:
 
     def run(self):
         try:
-            function()
+            self.function()
         except:
             pass
         else:
@@ -21,7 +21,9 @@ def test_test_passes():
     assert test.passed
 
 def test_test_fails():
-    test = Test(lambda: 123)
+    def _fails():
+        raise RuntimeError()
+    test = Test(_fails)
     test.run()
     assert not test.passed
 
