@@ -5,6 +5,7 @@ class Collector:
         self.num_passed = 0
         self.num_runs = 0
         self.results = ""
+        self.failures = []
 
     def get_results(self):
         return self.results
@@ -17,6 +18,8 @@ class Collector:
             test.run()
             if test.passed:
                 self.num_passed += 1
+            else:
+                self.failures.append(test.function.__name__)
             self.num_runs += 1
         self.results = f"{self.num_passed} of {self.num_runs}"
 
