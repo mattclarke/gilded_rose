@@ -80,8 +80,15 @@ def test_collector_can_list_failed_tests():
     collector = Collector()
     def _fails():
         raise RuntimeError()
+    
+    def _passes():
+        pass
     collector.add_test(Test(_fails))
+    collector.add_test(Test(_passes))
     collector.run_tests()
+
+    assert len(collector.failures) == 1
+    assert "_fails" in collector.failures
 
 if __name__ == "__main__":
     test_test_is_run()
@@ -90,3 +97,4 @@ if __name__ == "__main__":
     test_can_collect_one_fail()
     test_can_collect_one_pass()
     test_collector_can_print_results()
+    test_collector_can_list_failed_tests()
