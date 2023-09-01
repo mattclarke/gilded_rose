@@ -6,8 +6,6 @@ def get_time():
 
 
 def get_response(name, prompt="", time_function=get_time):
-
-
     if prompt == "Stop!":
         return f"Adios {name}"
     current_hour = time_function()
@@ -38,7 +36,6 @@ def test_says_buenas_tardes_daniel():
 
 
 def test_on_stop_says_adios():
-    # _ = get_response("Daniel", lambda: 12)
     response = get_response("Daniel", "Stop!", time_function=lambda: 12)
 
     assert response == "Adios Daniel"
