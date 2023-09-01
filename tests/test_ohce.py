@@ -19,15 +19,15 @@ def test_between_20_and_6_returns_buenas_noches():
     assert response == "¡Buenas noches Daniel!"
 
 
-def test_says_buenos_dias_daniel():
+def test_between_6_and_12_returns_buenos_dias():
 
-    response = get_response("Daniel")
+    response = get_response("Federica", lambda: 6)
 
-    assert response == "¡Buenos días Daniel!"
+    assert response == "¡Buenos días Federica!"
 
 
-def test_says_buenos_dias_pedro():
+def test_says_buenas_tardes_daniel():
 
-    response = get_response("Pedro")
+    response = get_response("Daniel", lambda: 12)
 
-    assert response == "¡Buenos días Pedro!"
+    assert response == "¡Buenas tardes Daniel!"
