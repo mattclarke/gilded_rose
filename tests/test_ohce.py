@@ -7,9 +7,12 @@ def get_time():
 
 def get_response(name, time_function=get_time):
     current_hour = time_function()
-    if 6 < current_hour >= 20:
+    if current_hour >= 20 or current_hour < 6:
         return f"¡Buenas noches {name}!"
-    return f"¡Buenos días {name}!"
+    elif 6 <= current_hour < 12:
+        return f"¡Buenos días {name}!"
+    else:
+        return f"¡Buenas tardes {name}!"
 
 
 def test_between_20_and_6_returns_buenas_noches():
