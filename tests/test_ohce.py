@@ -1,11 +1,20 @@
 from datetime import datetime
 
 
+NAME = None
+
+
 def get_time():
     return datetime.now().hour
 
 
-def get_response(name, time_function=get_time):
+def get_response(name, prompt, time_function=get_time):
+    
+
+    global NAME
+    if name == "Stop!":
+        return f"Adios {NAME}"
+    NAME = name
     current_hour = time_function()
     if current_hour >= 20 or current_hour < 6:
         return f"¡Buenas noches {name}!"
