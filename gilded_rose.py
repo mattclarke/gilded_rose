@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from third_party import *
 
 class GildedRose(object):
 
@@ -35,12 +36,3 @@ class GildedRose(object):
                     if item.quality < 50:
                         item.quality = item.quality + 1
 
-
-class Item:
-    def __init__(self, name, sell_in, quality):
-        self.name = name
-        self.sell_in = sell_in
-        self.quality = quality
-
-    def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
