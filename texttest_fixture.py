@@ -18,13 +18,17 @@ if __name__ == "__main__":
             ]
 
     days = 4
+    output = []
     import sys
     if len(sys.argv) > 1:
         days = int(sys.argv[1]) + 1
     for day in range(days):
+        output.append("-------- day %s --------" % day )
+        output.append("name, sellIn, quality")
         print("-------- day %s --------" % day)
         print("name, sellIn, quality")
         for item in items:
+            output.append(item.__repr__())
             print(item)
         print("")
         GildedRose(items).update_quality()
