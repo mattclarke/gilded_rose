@@ -25,11 +25,11 @@ if __name__ == "__main__":
     for day in range(days):
         output.append("-------- day %s --------" % day )
         output.append("name, sellIn, quality")
-        print("-------- day %s --------" % day)
-        print("name, sellIn, quality")
+        # print("-------- day %s --------" % day)
+        # print("name, sellIn, quality")
         for item in items:
             output.append(item.__repr__())
-            print(item)
+            # print(item)
         output.append("")
         GildedRose(items).update_quality()
 
