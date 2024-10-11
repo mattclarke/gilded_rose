@@ -30,5 +30,12 @@ if __name__ == "__main__":
         for item in items:
             output.append(item.__repr__())
             print(item)
-        print("")
+        output.append("")
         GildedRose(items).update_quality()
+
+    with open("golden.txt") as f:
+        golden = f.readlines()
+        for i, line in enumerate(output):
+            if line != golden[i]:
+                print(line)
+                print(golden[i])
