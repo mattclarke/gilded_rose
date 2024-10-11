@@ -4,7 +4,6 @@ from __future__ import print_function
 from gilded_rose import *
 
 if __name__ == "__main__":
-    print ("OMGHAI!")
     items = [
              Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
              Item(name="Aged Brie", sell_in=2, quality=0),
@@ -36,6 +35,6 @@ if __name__ == "__main__":
     with open("golden.txt") as f:
         golden = f.readlines()
         for i, line in enumerate(output):
-            if line != golden[i]:
+            if line != golden[i].strip():
                 print(line)
                 print(golden[i])
