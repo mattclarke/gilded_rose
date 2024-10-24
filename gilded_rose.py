@@ -45,7 +45,4 @@ class GildedRose(object):
                         # Normal
                         item.quality -= 1
                         item.quality = max(0, item.quality)
-                    else:
-                        # backstage
-                        item.quality = 0
 
