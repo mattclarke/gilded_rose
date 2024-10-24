@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from pkgutil import iter_modules
+
 from third_party import *
 
 class GildedRose(object):
@@ -17,11 +19,15 @@ class GildedRose(object):
                 item.quality = max(0, item.quality)
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 # backstage passes
-                item.quality += 1
-                if item.sell_in < 11:
-                    item.quality += 1
                 if item.sell_in < 6:
+                    item.quality += 3
+                    item.quality -= 2
+                elif item.sell_in < 11:
+                    item.quality += 2
+                    item.quality -= 1
+                else:
                     item.quality += 1
+
                 item.quality = min(50, item.quality)
             else:
                 # brie
