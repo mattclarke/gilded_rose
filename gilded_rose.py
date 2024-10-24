@@ -39,10 +39,8 @@ class GildedRose(object):
                 elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                     item.quality = 0
 
-                elif item.name != "Aged Brie":
-                    # Normal, backstage
-                    if item.name != "Backstage passes to a TAFKAL80ETC concert":
-                        # Normal
-                        item.quality -= 1
-                        item.quality = max(0, item.quality)
+                else:
+                    # Normal
+                    item.quality -= 1
+                    item.quality = max(0, item.quality)
 
