@@ -11,15 +11,9 @@ class GildedRose:
                 continue
             
             if item.name == "Aged Brie":
-                # brie
                 item.quality += 1
                 item.quality = min(50, item.quality)
-            elif item.name != "Backstage passes to a TAFKAL80ETC concert":
-                # this is normal items
-                item.quality -= 1
-                item.quality = max(0, item.quality)
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                # backstage passes
                 if item.sell_in < 6:
                     item.quality += 3
                 elif item.sell_in < 11:
@@ -27,12 +21,15 @@ class GildedRose:
                 else:
                     item.quality += 1
                 item.quality = min(50, item.quality)
+            else:
+                # this is normal items
+                item.quality -= 1
+                item.quality = max(0, item.quality)
 
             item.sell_in -= 1
 
             if item.sell_in < 0:
                 if item.name == "Aged Brie":
-                    # Brie
                     item.quality += 1
                     item.quality = min(50, item.quality)
                 elif item.name == "Backstage passes to a TAFKAL80ETC concert":
