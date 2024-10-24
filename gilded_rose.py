@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
 from pkgutil import iter_modules
 
-from third_party import *
 
-class GildedRose(object):
-
+class GildedRose:
     def __init__(self, items):
         self.items = items
 
@@ -21,13 +18,10 @@ class GildedRose(object):
                 # backstage passes
                 if item.sell_in < 6:
                     item.quality += 3
-                    item.quality -= 2
                 elif item.sell_in < 11:
                     item.quality += 2
-                    item.quality -= 1
                 else:
                     item.quality += 1
-
                 item.quality = min(50, item.quality)
             else:
                 # brie
@@ -41,12 +35,9 @@ class GildedRose(object):
                     # Brie
                     item.quality += 1
                     item.quality = min(50, item.quality)
-
                 elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                     item.quality = 0
-
                 else:
                     # Normal
                     item.quality -= 1
                     item.quality = max(0, item.quality)
-
