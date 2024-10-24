@@ -17,14 +17,12 @@ class GildedRose(object):
                     item.quality -= 1
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 # backstage passes
-                if item.quality < 50:
+                item.quality += 1
+                if item.sell_in < 11:
                     item.quality += 1
-                    if item.sell_in < 11:
-                        if item.quality < 50:
-                            item.quality += 1
-                    if item.sell_in < 6:
-                        if item.quality < 50:
-                            item.quality += 1
+                if item.sell_in < 6:
+                    item.quality += 1
+                item.quality = min(50, item.quality)
             else:
                 # brie
                 if item.quality < 50:
