@@ -25,16 +25,16 @@ class GildedRose(object):
                 item.quality = min(50, item.quality)
             else:
                 # brie
-                if item.quality < 50:
-                    item.quality += 1
+                item.quality += 1
+                item.quality = min(50, item.quality)
 
             item.sell_in -= 1
 
             if item.sell_in < 0:
                 if item.name == "Aged Brie":
                     # Brie
-                    if item.quality < 50:
-                        item.quality += 1
+                    item.quality += 1
+                    item.quality = min(50, item.quality)
 
                 elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                     item.quality = 0
